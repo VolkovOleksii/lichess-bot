@@ -91,6 +91,8 @@ class Conversation:
                 self.send_reply(line, f"Challenge queue: {challengers}")
             else:
                 self.send_reply(line, "No challenges queued.")
+        elif cmd.startswith("addtime"):
+            self.li.add_time(self.game.id, cmd[8:])
 
     def send_reply(self, line: ChatLine, reply: str) -> None:
         """

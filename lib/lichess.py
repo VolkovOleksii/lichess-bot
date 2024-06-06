@@ -23,6 +23,7 @@ ENDPOINTS = {
     "stream_event": "/api/stream/event",
     "move": "/api/bot/game/{}/move/{}",
     "takeback": "/api/bot/game/{}/takeback/{}",
+    "add_seconds": "/api/round/{}/add-time/{}",
     "chat": "/api/bot/game/{}/chat",
     "abort": "/api/bot/game/{}/abort",
     "accept": "/api/challenge/{}/accept",
@@ -282,6 +283,9 @@ class Lichess:
             return accept
         except Exception:
             return False
+
+    def add_time(self, game_id: str, add_seconds: str) -> None:
+        self.api_post("add_seconds", game_id, add_seconds)
 
     def chat(self, game_id: str, room: str, text: str) -> None:
         """
